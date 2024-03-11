@@ -1,0 +1,670 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Receipt</title>
+        <style type="text/css">
+            @font-face {
+                font-family: "Inter";
+                src: local("Inter"),
+                    url("https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/fonts/inter/Inter-Bold.woff")
+                        format("woff");
+
+                font-weight: 700;
+            }
+            @font-face {
+                font-family: "Inter";
+                src: local("Inter"),
+                    url("https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/fonts/inter/Inter-SemiBold.woff")
+                        format("woff");
+
+                font-weight: 500;
+            }
+            @font-face {
+                font-family: "Inter";
+                src: local("Inter"),
+                    url("https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/fonts/inter/Inter-Medium.woff")
+                        format("woff");
+
+                font-weight: 400;
+            }
+            @font-face {
+                font-family: "Inter";
+                src: local("Inter"),
+                    url("https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/fonts/inter/Inter-Regular.woff")
+                        format("woff");
+
+                font-weight: 300;
+            }
+            @font-face {
+                font-family: "Inter";
+                src: local("Inter"),
+                    url("https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/fonts/inter/Inter-Light-BETA.woff")
+                        format("woff");
+
+                font-weight: 100;
+            }
+
+            .alternate-background tr:nth-child(odd) {
+                background-color: #f2f6fe;
+            }
+        </style>
+        <style type="text/css">
+            @page {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body style="font-family: 'Inter'; margin: 0; box-sizing: border-box; background-color: #ffffff">
+        <center class="wrapper" style="width: 100%; table-layout: fixed">
+            <table
+                    class="container"
+                width="100%"
+                style="
+                    background-color: #f2f4f7;
+                    margin: auto;
+                    max-width: 640px;
+                    border-spacing: 0;
+                    color: #171a1b;
+                    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+                "
+            >
+                <tr style="background-color: #ffffff">
+                    <td style="padding: 0">
+                        <table width="100%" style="border-spacing: 0; margin-top: 35px">
+                            <tr style="height: 99px; background-color: white">
+<!--                                #cefad0 green-->
+                                <td style="padding: 0; width: 50%; text-align: left">
+                                    <a href="/" style="text-decoration: none">
+                                        <img
+                                            style=" margin: auto 32px"
+                                            src="https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/images/Frame.png"
+                                            alt="logo"
+                                        />
+                                    </a>
+                                </td>
+                                <td style="padding: 0; width: 50%; text-align: right">
+                                    <p
+                                        style="
+                                            color: #008000;
+                                            text-decoration: none;
+                                            margin: 24px;
+                                            font-family: 'Inter', sans-serif;
+                                            font-weight: 100;
+                                            font-weight: 10px;
+                                        "
+                                    ><strong>
+                                        Transaction Receipt
+                                    </strong>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr style="background-color: #ffffff">
+                    <td style="padding: 40px">
+                        <table width="100%">
+                            <tr>
+                                <td style="text-align: left; width:50%">
+                                    <p
+                                            style="
+                                            font-size: 12px;
+                                            font-style: normal;
+                                            font-weight: 400;
+                                            color: #868c98;
+                                            line-height: 16px;
+                                            letter-spacing: -0.12px;
+                                            margin: 0;
+                                        "
+                                    >
+                                        Transaction Amount
+                                    </p>
+                                    <h1
+                                            style="
+                                            display: flex;
+                                            font-size: 20px;
+                                            font-style: normal;
+                                            font-weight: 500;
+                                            color: #008000;
+                                            line-height: 32px;
+                                            margin: 0;
+                                        "
+                                    >
+                                        <span>&#8358;</span>
+                                        <span th:text="${#numbers.formatDecimal(transaction.getAmount(),0,'COMMA',2,'POINT')}"
+                                    ></span
+                                    >
+                                    </h1>
+                                </td>
+                                <td
+                                        style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        /*border-bottom: 1px solid #f2f4f7;*/
+                                        text-align: right;
+
+                                    "
+                                >
+                                    <h1
+                                            style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                    >
+                                        <!--                                            th:text="${transaction.getStatus()}"-->
+
+                                        Status
+                                    </h1>
+                                    <p
+                                            style="
+                                            color: #008000;
+                                            font-size: 13px;
+                                            font-weight: 400;
+                                            margin: 0;
+                                            margin-top: 4px;
+                                            vertical-align: middle;
+                                        "
+                                    >
+                                        <span th:text="${transaction.getStatus()}"
+                                            style="background-color: #eeeeee;
+                                            text-transform: uppercase;
+                                            padding: 3px 6px;
+                                            border-radius: 7px;
+
+                                        "
+                                        > . </span>
+                                    </p>
+                                </td>
+                            </tr>
+<!--                            <tr style="text-align: center">-->
+<!--                                <td>-->
+<!--                                    <p-->
+<!--                                        style="-->
+<!--                                            font-size: 12px;-->
+<!--                                            font-style: normal;-->
+<!--                                            font-weight: 400;-->
+<!--                                            color: #868c98;-->
+<!--                                            line-height: 16px;-->
+<!--                                            letter-spacing: -0.12px;-->
+<!--                                            margin: 0;-->
+<!--                                        "-->
+<!--                                    >-->
+<!--                                        Transaction Amount-->
+<!--                                    </p>-->
+<!--                                    <h1-->
+<!--                                        style="-->
+<!--                                            font-size: 20px;-->
+<!--                                            font-style: normal;-->
+<!--                                            font-weight: 500;-->
+<!--                                            color: #000000;-->
+<!--                                            line-height: 32px;-->
+<!--                                            margin: 0;-->
+<!--                                        "-->
+<!--                                    >-->
+<!--                                        <span>₦</span-->
+<!--                                        ><span th:text="${#numbers.formatDecimal(amount,0,'COMMA',2,'POINT')}"-->
+<!--                                            >105,000.00</span-->
+<!--                                        >-->
+<!--                                    </h1>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+                        </table>
+                        <table width="100%" style="border-spacing: 0">
+                            <tr>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: left;
+                                    "
+                                >
+                                    <h1 style="color: #868c98; font-size: 13px; font-weight: 500; margin: 0">
+                                        Beneficiary
+                                    </h1>
+                                </td>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: right;
+                                    "
+                                >
+                                    <h1
+                                        style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                        th:text="${transaction.getBeneficiary()}"
+                                    >
+<!--                                        Seyifunmi Ololade Gunther-->
+                                    </h1>
+                                    <p
+                                        style="
+                                            color: #4f555f;
+                                            font-size: 13px;
+                                            font-weight: 400;
+                                            margin: 0;
+                                            margin-top: 4px;
+                                            vertical-align: middle;
+                                        "
+                                    >
+                                        <span th:text="${transaction.getBAcctType()}"> </span>
+                                        <span
+                                            style="
+                                                display: inline-block;
+                                                width: 4px;
+                                                height: 4px;
+                                                border-radius: 4px;
+                                                background-color: #b7bbc3;
+                                                vertical-align: middle;
+                                                margin: 4px;
+                                            "
+                                        ></span>
+                                        <span th:text="${transaction.getBAcctNo()}"></span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: left;
+                                    "
+                                >
+                                    <h1 style="color: #868c98; font-size: 13px; font-weight: 500; margin: 0">Sender</h1>
+                                </td>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: right;
+                                    "
+                                >
+                                    <h1
+                                        style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                        th:text="${transaction.getSender()}"
+                                    >
+
+                                    </h1>
+                                    <p
+                                        style="
+                                            color: #4f555f;
+                                            font-size: 13px;
+                                            font-weight: 400;
+                                            margin: 0;
+                                            margin-top: 4px;
+                                            vertical-align: middle;
+                                        "
+                                        th:text="${transaction.getSAcctNo()}"
+                                    >
+
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: left;
+                                    "
+                                >
+                                    <h1 style="color: #868c98; font-size: 13px; font-weight: 500; margin: 0">
+                                        Transaction Type
+                                    </h1>
+                                </td>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: right;
+                                    "
+                                >
+                                    <h1
+                                        style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                        th:text="${transaction.getType()}"
+                                    >
+
+                                    </h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: left;
+                                    "
+                                >
+                                    <h1 style="color: #868c98; font-size: 13px; font-weight: 500; margin: 0">
+                                        Transaction Date
+                                    </h1>
+                                </td>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: right;
+                                    "
+                                >
+                                    <h1
+                                        style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                        th:text="${transaction.getDate()}"
+                                    >
+
+                                    </h1>
+                                    <!--                  <p-->
+                                    <!--                    style="-->
+                                    <!--                      color: #4f555f;-->
+                                    <!--                      font-size: 14px;-->
+                                    <!--                      font-weight: 400;-->
+                                    <!--                      margin: 0;-->
+                                    <!--                      margin-top: 4px;-->
+                                    <!--                      vertical-align: middle;-->
+                                    <!--                    "-->
+                                    <!--                  >-->
+                                    <!--                    3:34 PM-->
+                                    <!--                  </p>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: left;
+                                    "
+                                >
+                                    <h1 style="color: #868c98; font-size: 13px; font-weight: 500; margin: 0">
+                                        Transaction Status
+                                    </h1>
+                                </td>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: right;
+                                    "
+                                >
+                                    <h1
+                                        style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                        th:text="${transaction.getStatus()}"
+                                    >
+
+                                    </h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: left;
+                                    "
+                                >
+                                    <h1 style="color: #868c98; font-size: 13px; font-weight: 500; margin: 0">
+                                        Narration
+                                    </h1>
+                                </td>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: right;
+                                    "
+                                >
+                                    <h1
+                                        style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                        th:text="${transaction.getNarration()}"
+                                    >
+
+                                    </h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: left;
+                                    "
+                                >
+                                    <h1 style="color: #868c98; font-size: 13px; font-weight: 500; margin: 0">
+                                        Transaction Reference
+                                    </h1>
+                                </td>
+                                <td
+                                    style="
+                                        width: 50%;
+                                        line-height: 20px;
+                                        padding: 10px 0;
+                                        vertical-align: top;
+                                        border-bottom: 1px solid #f2f4f7;
+                                        text-align: right;
+                                    "
+                                >
+                                    <h1
+                                        style="color: #000000; font-size: 13px; font-weight: 500; margin: 0"
+                                        th:text="${transaction.getRef()}"
+                                    >
+
+                                    </h1>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr style="background-color: #ffffff">
+                    <td>
+                        <table width="100%" style="border-spacing: 0; padding: 0 40px">
+                            <tr style="height: 60px">
+                                <td style="width: 50%; height: 100%; text-align: center">
+                                    <a
+                                        th:href="${url + '/signup'}"
+                                        style="
+                                            display: inline-block;
+                                            border-radius: 12px;
+                                            color: #000000;
+                                            background-color: #cefad0;
+                                            text-decoration: none;
+
+                                            width: 95%;
+                                            text-align: center;
+                                            box-sizing: border-box;
+                                            padding: 15px 0;
+
+                                            font-size: 12px;
+                                            cursor: pointer;
+                                        "
+                                    >
+                                        <table style="
+                                        width: 30%;
+                                        margin: auto;
+
+                                                ">
+                                            <tr
+                                            >
+                                                <td >
+                                                    <img
+                                                        height="25"
+                                                        src="https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/images/dot-reciept-logo.png"
+                                                        alt=""
+                                                    />
+                                                </td>
+                                                <td  ><b>Support:</b> support@dot.ai</td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </td>
+<!--                                <td style="width: 50%; height: 100%; text-align: center">-->
+<!--                                    <a-->
+<!--                                        href="https://linktr.ee/DotBanking"-->
+<!--                                        style="-->
+<!--                                            display: inline-block;-->
+<!--                                            border-radius: 12px;-->
+<!--                                            color: #ffffff;-->
+<!--                                            background-color: #000000;-->
+<!--                                            text-decoration: none;-->
+
+<!--                                            width: 95%;-->
+<!--                                            text-align: center;-->
+<!--                                            box-sizing: border-box;-->
+<!--                                            padding: 15px 0;-->
+
+<!--                                            font-size: 12px;-->
+<!--                                            cursor: pointer;-->
+<!--                                        "-->
+<!--                                    >-->
+<!--                                        <table>-->
+<!--                                            <tr>-->
+<!--                                                <td width="35%" style="text-align: right">-->
+<!--                                                    <img-->
+<!--                                                        height="20"-->
+<!--                                                        src="https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/images/ios-logo.png"-->
+<!--                                                        alt=""-->
+<!--                                                    />-->
+<!--                                                </td>-->
+<!--                                                <td width="65%" style="text-align: left">Download the Dot App</td>-->
+<!--                                            </tr>-->
+<!--                                        </table>-->
+<!--                                    </a>-->
+<!--                                </td>-->
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr style="background-color: #ffffff">
+                    <td style="padding: 25px; text-align: center">
+                        <p
+                            style="
+                                font-size: 12px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 16px;
+                                letter-spacing: -0.12px;
+                                color: #868c98;
+                            "
+                        >
+                            This electronically generated receipt is provided for informational purposes only and is not
+                            a legally binding document.
+                        </p>
+                    </td>
+                </tr>
+<!--                tr<tr>-->
+<!--                    <td style="padding: 0">-->
+<!--                        <table width="100%" style="border-spacing: 0; background-color: #ffffff">-->
+<!--                            <tr style="height: 88px">-->
+<!--                                <td style="width: 10%"></td>-->
+<!--                                <td style="padding: 0; width: 45%">-->
+<!--                                    <table width="100%">-->
+<!--                                        <tr>-->
+<!--                                            <td>-->
+<!--                                                <img-->
+<!--                                                    src="https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/images/Frame.png"-->
+<!--                                                    alt="dot"-->
+<!--                                                    style="-->
+<!--                                                        border: 10px solid #f7f7f7;-->
+<!--                                                        border-radius: 50%;-->
+<!--                                                        margin: 10px;-->
+<!--                                                        margin-left: 24px;-->
+<!--                                                        margin-right: 0;-->
+<!--                                                        width: 32px;-->
+<!--                                                        height: 32px;-->
+<!--                                                    "-->
+<!--                                                />-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <p-->
+<!--                                                    style="-->
+<!--                                                        font-size: 12px;-->
+<!--                                                        font-weight: 500;-->
+<!--                                                        color: #4f555f;-->
+<!--                                                        margin: 10px;-->
+<!--                                                        margin-right: 24px;-->
+<!--                                                        margin-left: 0;-->
+<!--                                                    "-->
+<!--                                                >-->
+<!--                                                    Dot Microfinance Bank-->
+<!--                                                </p>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                    </table>-->
+<!--                                </td>-->
+<!--                                <td style="padding: 0; width: 35%">-->
+<!--                                    <table width="100%" style="border: 2px solid #636363; border-radius: 7.4px">-->
+<!--                                        <tr>-->
+<!--                                            <td style="margin: 4px 8px">-->
+<!--                                                <p-->
+<!--                                                    style="-->
+<!--                                                        font-size: 10px;-->
+<!--                                                        font-weight: 500;-->
+<!--                                                        color: #919193;-->
+<!--                                                        margin: 5px 10px;-->
+<!--                                                        margin-right: 0;-->
+<!--                                                    "-->
+<!--                                                >-->
+<!--                                                    LICENSED BY THE CBN-->
+<!--                                                </p>-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <img-->
+<!--                                                    src="https://falcon-openacess.s3.eu-central-1.amazonaws.com/assets/images/cbn.png"-->
+<!--                                                    alt="cbn"-->
+<!--                                                    style="margin: 5px 10px; margin-left: 0; width: 26px; height: 32px"-->
+<!--                                                />-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                    </table>-->
+<!--                                </td>-->
+<!--                                <td style="width: 10%"></td>-->
+<!--                            </tr>-->
+<!--                        </table>-->
+<!--                    </td>-->
+<!--                </tr>-->
+            </table>
+        </center>
+    </body>
+</html>

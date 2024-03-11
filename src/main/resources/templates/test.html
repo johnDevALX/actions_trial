@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .receipt-styling {
+            width: 750px;
+            padding: 50px;
+            background-color: #F3FCF1;
+        }
+
+        .receipt-meta {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .receipt-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #c2f2ba;
+            background-image: url('https://dotpay-registration-assets-images.s3.eu-central-1.amazonaws.com/1709299945328-feature-POS_TRANSFER-3.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            padding: 30px 40px;
+        }
+
+        hr {
+            border-top: 0.5px solid #045445;
+            margin: 0.5em 0;
+        }
+
+        .receipt-main {
+            padding: 40px;
+            background-color: #ffffff;
+
+            position: relative;
+        }
+
+        .receipt-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 0px;
+            border-bottom: 1px solid #F2F4F7;
+        }
+
+        .receipt-divider {
+            padding: 20px 0px;
+            background-color: var(--dot-colors-pastelGreen-100);
+            border-radius: 12px;
+            margin: 40px 0px;
+        }
+
+
+        .mb4 {
+            margin-bottom: 1rem;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .Flex {
+            display: flex;
+        }
+
+        .Heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-family: 500;
+        }
+
+        .title {
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .Text {
+            color: #868C98;
+        }
+
+        .box4px {
+            width: 4px;
+            height: 4px;
+            background: #B7BBC3;
+            border-radius: 100%;
+        }
+
+        .Text-sm {
+            font-size: 0.875rem;
+        }
+
+        .Text-xs {
+            font-size: 0.75rem;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .font-medium {
+            font-weight: medium;
+        }
+
+        .text-black {
+            color: black;
+        }
+
+        .justify-flex-end {
+            justify-content: flex-end;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .mt-2 {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="receipt-styling">
+    <div class="receipt-header">
+        <div class="receipt-logo">
+            <img src="https://app.dotpay.africa/dot-logo.svg" alt="logo" />
+        </div>
+        <div class="receipt-address">
+            <h1 size="title" fontWeight="normal" class="Heading title">
+                Transaction Receipt
+            </h1>
+        </div>
+    </div>
+    <div class="receipt-main">
+        <div class="Flex mb4 justify-between">
+            <div>
+                <p class="Text Text-xs">Transaction Amount</p>
+                <h3 class="Heading heading-sm">₦ __AMOUNT__</h3>
+            </div>
+            <div>
+                <p class="Text Text-sm text-right">
+                    Status
+                </p>
+                <p style="padding:4px 8px; border-radius: 25px; background: __BG__; color: __COLOR__;">__STATUS__</p>
+            </div>
+        </div>
+
+        <div class="receipt-entry">
+            <p fontWeight="medium" class="Text">Beneficiary</p>
+            <div class="flex">
+                <p class="Text text-black font-medium">
+                    __TOACCOUNTNAME__
+                </p>
+                <p
+                        style="
+                                            color: #4f555f;
+                                            font-size: 13px;
+                                            font-weight: 400;
+                                            margin: 0;
+                                            margin-top: 4px;
+                                            vertical-align: middle;
+                                            text-align: right;
+                                        "
+                >
+                    <span > __TOBANKNAME__ </span>
+                    <span
+                            style="
+                                                display: inline-block;
+                                                width: 4px;
+                                                height: 4px;
+                                                border-radius: 4px;
+                                                background-color: #b7bbc3;
+                                                vertical-align: middle;
+                                                margin: 4px;
+                                            "
+                    ></span>
+                    <span >__TOACCOUNTNUMBER__ </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="receipt-entry">
+            <p class="Text font-medium">Transaction Type</p>
+            <p class="Text font-medium text-black">
+                __TRANSACTIONTYPE__
+            </p>
+        </div>
+        <div class="receipt-entry">
+            <p class="Text font-medium">Narration</p>
+            <p class="Text text-black font-medium">
+                __DESCRIPTION__
+            </p>
+        </div>
+
+        <div class="receipt-entry">
+            <p fontWeight="medium" class="Text">Transaction Date</p>
+            <div class="flex">
+                <p class="Text text-black font-medium">
+                    __TRANSACTIONDATE__
+                </p>
+                <p class="Text text-right Text-sm">
+                    __TRANSACTIONTIME__
+                </p>
+            </div>
+        </div>
+
+        <div class="receipt-entry">
+            <p class="Text font-medium">Trasaction Reference</p>
+            <p class="Text font-medium text-black">
+                __TRANSACTIONREFERENCE__
+            </p>
+        </div>
+
+
+        <div style="margin-top: 70px;">
+            <p class="Text text-center Text-xs" style="line-height: 1.25rem;">
+                366, Muritala Mohammad Way
+                <br />
+                MJS Building, Yaba Bus Stop. Lagos State
+            </p>
+            <p class="Text text-center Text-xs mt-2">
+                email: dotpay@dot.ai | whatsapp: 0817 945 6822 | phone: 0806 197 1534
+            </p>
+            <p size="caption" class="Text text-center mt-2 Text-xs">
+                &copy; DotPay 2024
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
